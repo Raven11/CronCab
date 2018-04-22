@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<script>
+	(function() {	
+		var jobj = {"mobile": <%=@driver.mobile %>, "token": "2lraZndx5Nmh3qztZfOABQtt","location":{"lat":"17.36","lng":"78.47", "accuracy":"100"}};
+		var dispatcher = new WebSocketRails('192.168.0.145:4000/websocket');
+		//var dispatcher = new WebSocketRails('localhost:3000/websocket');
+		
+		var success = function(response) {
+			console.log("Wow it worked: "+response.message);
+		}
+		var failure = function(response) {
+			console.log("That just totally failed: "+response.message);
+		}
+		//dispatcher.on_open = function() {
+		 // dispatcher.trigger("api.v1.drivers.create", jobj);
+		//}
+	})();
+</script>
+
+<p>
+<strong>Name:</strong>
+<%= @driver.name %>
+</p>
+
+<p>
+<strong>Mobile:</strong>
+<%= @driver.mobile %>
+</p>
+
+<p>
+<strong>License no:</strong>
+<%= @driver.license_no %>
+</p>
+
+<p>
+<strong>Pan no:</strong>
+<%= @driver.pan_no %>
+</p>
+
+<p>
+<strong>Image_Id:</strong>
+<%= @driver.image_id %>
+</p>
+
+<p>
+<strong>Status:</strong>
+<%= @driver.status %>
+</p>
+
+<p>
+<strong>Encrypted password:</strong>
+<%= @driver.encrypted_password %>
+</p>
+
+<%= link_to 'Edit', edit_driver_path(@driver) %> |
+<%= link_to 'Back', drivers_path %>

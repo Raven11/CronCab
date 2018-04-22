@@ -1,0 +1,34 @@
+<h1>Admin-List</h1>
+
+
+<div class="table table-striped">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Mobile</th>
+				<th>License no</th>
+				<th>Pan no</th>
+				<th>Status</th>
+				<th>Encrypted_password</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @drivers.each do |driver| %>
+				<tr>
+					<td><%= driver.name %></td>
+					<td><%= driver.mobile %></td>
+					<td><%= driver.license_no %></td>
+					<td><%= driver.pan_no %></td>
+					<td><%= driver.status %></td>
+					<td><%= driver.encrypted_password %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<br>
+<%= link_to 'New Driver', new_driver_path, :class => 'btn btn-primary' %>
+
+

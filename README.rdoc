@@ -1,0 +1,117 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+
+
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 06e4705ac6013c7bbb6c21706f8e1c2a2bd34ccb
+API:
+Create a new token, and store in db:
+===================================
+request:
+POST /api/v1/drivers/auth
+params : mobile, password
+response:
+Success : 200, { token, name, mobile, image }
+Failure : 401 (not authorized) or 400 (any other issues)
+------------------------------------------------------
+
+Show driver details:
+===================
+request
+GET /api/v1/drivers/auth
+params : token, mobile
+response
+Success : 200, { name, mobile, image }
+Failure : 401 (not authorized) or 400 (any other issues)
+--------------------------------------------------------
+
+Log out:
+=======
+request
+DELETE /api/v1/drivers/auth
+params : token, mobile
+response
+Success : 200, {}
+Failure : 401 (not authorized) or 400 (any other issues)
+
+===========
+Socket API:
+===========
+
+Store the location of driver in redis
+=====================================
+request
+api.v1.drivers.set_location
+params: {location{lat,lng},auth{token,mobile}}
+response
+Success, failure(invalid location params), not authorized(invalid token) messages
+
+---------------------------------------------------------------------------------
+========
+Map API:
+========
+
+Show all Drivers on Google Map
+==============================
+request
+GET /admin/drivers/map
+params: none
+response
+driver list
+
+
+
+
+
+
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 06e4705ac6013c7bbb6c21706f8e1c2a2bd34ccb

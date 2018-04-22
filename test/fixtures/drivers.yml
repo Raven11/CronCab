@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  mobile: 1
+  license_no: 1
+  pan_no: 1
+  image_id: 1
+  status: false
+  encrypted_password: MyString
+
+two:
+  name: MyString
+  mobile: 1
+  license_no: 1
+  pan_no: 1
+  image_id: 1
+  status: false
+  encrypted_password: MyString

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  make: MyString
+  model: MyString
+  year: 1
+  registration_no: 1
+  driver_id: 1
+  driver_id: 
+
+two:
+  make: MyString
+  model: MyString
+  year: 1
+  registration_no: 1
+  driver_id: 1
+  driver_id: 

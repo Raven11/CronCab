@@ -1,0 +1,59 @@
+<style>
+			#map-canvas {
+				height: 500px;
+				margin-top: 40px;
+				padding: 10px;
+			}
+			
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,geometry&sensor=false"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+    
+
+function initialize() {
+  var myLatlng = new google.maps.LatLng(17.36, 78.47);
+  var mapOptions = {
+    zoom: 8,
+    center: myLatlng
+  }
+  
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  <% @drivers.each do |driver| %>
+   
+  <% loc = $redis.get("location_driver_#{driver.id}") unless driver.nil? %>;
+  <% unless loc.nil? or loc.empty? %>
+  var location =  <%=raw loc %>;
+  var contentString = '<b>Name: </b>'+"<%=driver.name%>"+'<br><b>Phone: </b>'+"<%=driver.mobile.to_s%>"+
+  '<br><b>Image: </b>'+ '<%=image_tag driver.image.picture_url(:thumb) unless driver.image.nil? or driver.image.picture.nil? %>';
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+  
+  var Latlng = new google.maps.LatLng(parseFloat(location["lat"]),parseFloat(location["lng"]));
+  debugger;
+  //map.setCenter(myLatlng);
+  var marker = new google.maps.Marker({
+  	  
+      position: Latlng,
+      map: map,      
+      icon: '../../../assets/green\.jpg'
+  });
+  if(Date.now()-location["time_stamp"] < 30000){marker.icon = '../../../assets/green\.jpg';}
+  else marker.icon = '../../../assets/red\.jpg';
+   
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+
+  <%end%>
+  <%end%>
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+      
+</script>
+
+<div id = "test" style="float: right"></div>
+<div id="map-canvas">	
+</div>
